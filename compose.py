@@ -260,7 +260,8 @@ def art_cricket(d, x, y, w, h):
               fill=(200, 40, 40))
     for sx in (x + w - 26, x + w - 20, x + w - 14):
         d.rectangle([sx, y + h - 18, sx + 3, y + h - 8], fill=(255, 220, 90))
-    d.text((x + 6, y + h - 13), "720/9", font=sans_b(9), fill=(255, 255, 255))
+    d.rectangle([x + 12, y + h - 14, x + 52, y + h - 1], fill=(34, 110, 60))
+    d.text((x + 14, y + h - 13), "720/9", font=sans_b(9), fill=(255, 255, 255))
 
 
 def art_flags(d, x, y, w, h):
@@ -540,9 +541,9 @@ def paint_numbers(d):
         ("258", "Democrats' House seats"),
         ("No deal", "COP31 collapses"),
         ("720/9", "India declare, Wellington"),
-        ("14", "missing in Dymer, Kyiv"),
+        ("at least 14", "missing in Dymer, Kyiv"),
         ("24", "body bags, Cikande fire"),
-        ("-5.28%", "Nasdaq's worst week"),
+        ("-10%", "Nasdaq's worst week"),
     ]
     y0, y1 = 146, 194
     cw = CONTENT_W / 6.0
@@ -562,10 +563,18 @@ def paint_numbers(d):
 def paint_region_bar(d, counts):
     y0, y1 = 200, 224
     total = sum(counts.values())
+    widths = {r: CONTENT_W * counts[r] / total for r in REGION_ORDER}
+    # Minimum segment width so the smallest label ("Oceania 1", ~50px at
+    # 9px bold) fits; the deficit comes off the largest segment.
+    min_w = 56.0
+    for r in REGION_ORDER:
+        if widths[r] < min_w:
+            widths[max(widths, key=lambda k: widths[k])] -= min_w - widths[r]
+            widths[r] = min_w
     x = MARGIN
     for region in REGION_ORDER:
         n = counts[region]
-        seg = CONTENT_W * n / total
+        seg = widths[region]
         d.rectangle([x, y0, x + seg, y1], fill=REGION_COLOURS[region])
         label = "%s %d" % (REGION_SHORT.get(region, region), n)
         f = sans_b(9)
@@ -664,8 +673,8 @@ def paint_date_check(d, x, y, w, h):
 def paint_footer(d, y):
     d.line([MARGIN, y, W - MARGIN, y], fill=LINE, width=1)
     d.text((MARGIN, y + 4),
-           "Every story here happened, or was first reported, on Monday "
-           "23 November 2026; earlier events carry their date in the deck.",
+           "Monday 23 November 2026 \u2014 the weekend's biggest stories "
+           "plus today's developments; earlier events are dated in the deck.",
            font=sans(10), fill=INK)
     d.text((MARGIN, y + 16), SOURCES_LINE, font=sans(9), fill=(70, 70, 70))
     d.text((MARGIN, y + 28),
