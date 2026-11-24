@@ -28,6 +28,8 @@ INK = (26, 26, 26)
 NAVY = (24, 42, 78)
 RED = (178, 34, 34)
 RED_DK = (140, 22, 22)
+GREEN = (34, 139, 34)
+GREEN_DK = (22, 100, 22)
 GOLD = (198, 142, 32)
 TEAL = (18, 110, 105)
 GREY = (110, 104, 90)
@@ -378,16 +380,17 @@ def art_chart(d, x, y, w, h):
         d.line([gx, y + 6, gx, y + h - 6], fill=(220, 214, 196), width=1)
     for gy in range(y + 8, y + h - 4, 12):
         d.line([x + 6, gy, x + w - 6, gy], fill=(220, 214, 196), width=1)
-    # Falling red line with a sharp Friday drop.
-    pts = [(x + 8, y + 10), (x + w // 4, y + 14), (x + w // 2, y + 18),
-           (x + 3 * w // 4, y + 26), (x + w - 10, y + h - 12)]
-    d.line(pts, fill=RED, width=3)
+    # Rising green line — mostly flat, then a sharp Monday rebound.
+    pts = [(x + 8, y + h - 16), (x + w // 4, y + h - 12),
+           (x + w // 2, y + h - 14), (x + 3 * w // 4, y + h - 18),
+           (x + w - 10, y + 10)]
+    d.line(pts, fill=GREEN, width=3)
     for px, py in pts:
-        d.ellipse([px - 3, py - 3, px + 3, py + 3], fill=RED_DK)
-    # Down arrow at the end.
-    d.polygon([(x + w - 16, y + h - 20), (x + w - 4, y + h - 20),
-               (x + w - 10, y + h - 8)], fill=RED_DK)
-    d.text((x + 6, y + 4), "-5.28%", font=sans_b(9), fill=RED_DK)
+        d.ellipse([px - 3, py - 3, px + 3, py + 3], fill=GREEN_DK)
+    # Up arrow at the end.
+    d.polygon([(x + w - 16, y + 16), (x + w - 4, y + 16),
+               (x + w - 10, y + 4)], fill=GREEN_DK)
+    d.text((x + 6, y + 4), "+6.51%", font=sans_b(9), fill=GREEN_DK)
 
 
 ART = {"cop": art_cop, "capitol": art_capitol, "sunk": art_sunk,
@@ -540,10 +543,10 @@ def paint_numbers(d):
     cells = [
         ("258", "Democrats' House seats"),
         ("No deal", "COP31 collapses"),
-        ("720/9", "India declare, Wellington"),
-        ("at least 14", "missing in Dymer, Kyiv"),
-        ("24", "body bags, Cikande fire"),
-        ("-10%", "Nasdaq's worst week"),
+        ("239/5", "NZ save draw, Wellington"),
+        ("11", "killed in Dymer, Kyiv"),
+        ("24", "confirmed dead, Cikande fire"),
+        ("+6.51%", "Nasdaq's Monday rebound"),
     ]
     y0, y1 = 146, 194
     cw = CONTENT_W / 6.0
