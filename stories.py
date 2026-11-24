@@ -2,16 +2,17 @@
 # 44 stories, 7 regions. Every item verified Mon 23 Nov 2026 ~12:00 WIB
 # against a named wire/primary source (see the research note).
 # Rules baked into the decks: Democrats 258 (AP/Reuters, never CNN's 259);
-# Dymer "at least 14" missing (wires split 14 vs 15); Cikande "3 confirmed
-# dead, dozens missing; 24 body bags recovered" (body bags != deaths);
+# Dymer "11 killed" and Cikande "24 confirmed dead" are the freeze-pass
+# final tolls (Kyiv Post 23 Nov; Kapolres Serang / Reuters 23 Nov);
 # Syria landmine "4-5 children killed" (wires split 4 vs 5); IRGC Patriot
 # claim and the Khartoum drone-origin claim are attributed, never stated;
 # Gauteng "agreed in principle; signing pending"; UK-EU "deal agreed",
 # never "signed". Events dated Fri 19 / Sat 21 / Sun 22 Nov carry that
 # date INSIDE their deck; nothing is decked as Monday news unless it is.
 # The 7 developing stories (India Test, Nepal-Modi, NATO council, IG
-# Metall strike, Dymer toll, Cikande toll, Monday markets) are decked at
-# their research-time status; the ~20:00 WIB freeze pass updates them.
+# Metall strike, Dymer toll, Cikande toll, Monday markets) were decked at
+# their research-time status; the ~20:00 WIB freeze pass updated them
+# (see git log) to their final Monday values.
 # Peru quake (6.7) is NOT in this slate at all.
 
 LEADS = [
@@ -32,32 +33,32 @@ LEADS = [
      "at anchor; 10 lightly hurt. Sun.",
      "Reuters", "sunk"),
     (4, "Europe", "War", "UKRAINE",
-     "AT LEAST 14 MISSING IN KYIV DRONE HIT",
-     "At least 14 missing in Dymer; 9 evacuated, 2 bodies found. Sun.",
-     "Reuters", "flats"),
+     "11 KILLED IN DYMER DRONE HIT",
+     "11 dead incl. 11-yr-old girl; search over, 5 in hospital. Mon.",
+     "Kyiv Post", "flats"),
     (5, "Asia", "Disasters", "DISASTER",
-     "CIKANDE FACTORY FIRE KILLS 3",
-     "3 confirmed dead, dozens missing; 24 body bags recovered. Sat.",
+     "CIKANDE TOLL CONFIRMED AT 24",
+     "24 confirmed dead Mon; ~30 still missing. DNA ID under way.",
      "Reuters", "fire"),
     (6, "Americas", "Sport", "SPORT",
      "VERSTAPPEN WINS LAS VEGAS GP",
      "Beats Norris by 0.639s; 35 lead changes, 352 overtakes. Sat.",
      "formula1.com", "race"),
     (7, "Oceania", "Sport", "CRICKET",
-     "INDIA DECLARE 720/9 IN WELLINGTON",
-     "Highest Test total in NZ; Rahul 136, Pant 128. NZ 227/5, day 5.",
+     "NZ SAVE DRAW IN WELLINGTON",
+     "India 720/9 dec; NZ 368 & 239/5 hold on day 5. Mitchell 49*.",
      "ESPNcricinfo", "cricket"),
     (8, "Asia", "Politics", "DIPLOMACY",
-     "NEPAL PM SHAH MEETS MODI TODAY",
-     "First bilateral trip since Mar; talks in Delhi Mon.",
-     "IANS", "flags"),
+     "NEPAL, INDIA SIGN 8 PACTS",
+     "8 MoUs signed in Delhi; India pledges $1.63bn package. Mon.",
+     "Hindu BusinessLine", "flags"),
     (9, "Asia", "Politics", "EDUCATION",
      "S KOREA EDUCATION MINISTER QUITS",
      "Choi Kyo-jin resigns over CSAT cheating scandal; 111 cases. Sun.",
      "Reuters", "exam"),
     (10, "Europe", "Politics", "NATO",
-     "NATO EMERGENCY MEETING TODAY",
-     "3 Russian objects entered Polish airspace Fri; council meets Mon.",
+     "NATO TO SEND AWACS TO POLAND",
+     "AWACS to deploy after missile incident; no Article 4 invoked. Mon.",
      "Reuters", "shield"),
     (11, "Middle East", "War", "GULF",
      "IRGC HITS US BASES IN BAHRAIN",
@@ -68,8 +69,8 @@ LEADS = [
      "Hit Sat off Finland; 16 crew evacuated, 1 lightly hurt.",
      "Reuters", "tow"),
     (13, "Americas", "Economy", "MARKETS",
-     "WORST WEEK FOR STOCKS SINCE 2020",
-     "S&P -3.7%, Nasdaq -5.28% Fri; Anthropic debuts $111.50 Thu; -9% Fri.",
+     "STOCKS SOAR IN MONDAY REBOUND",
+     "S&P +4.73%, Nasdaq +6.51% Mon; Nvidia +31.5%.",
      "Investopedia", "chart"),
 ]
 
@@ -88,7 +89,7 @@ BRIEFS = [
     (22, "Africa", "Disasters", "Nigeria funeral boat capsizes; at least 24 dead (AP)"),
     (23, "World/Global", "War", "UN killer-robot talks end with no binding rules (AP)"),
     (24, "Asia", "Politics", "India-China hold 2nd round of LAC talks"),
-    (25, "Europe", "Labour", "IG Metall strike today: 23,000 workers out (Reuters)"),
+    (25, "Europe", "Labour", "IG Metall strike: 23,000+ workers called out (Reuters)"),
     (26, "Americas", "Politics", "Bolsonaro in ICU after abdomen blockage (Reuters)"),
     (27, "Americas", "Tech", "FBI probes suspected hack of crime database (AP)"),
     (28, "Africa", "War", "Khartoum drone strikes kill 4, hit UN building (AP)"),
@@ -126,4 +127,5 @@ DATE_CHECK = [
 
 SOURCES_LINE = ("Sources: Reuters, AP, Al Jazeera, AFP, ANI, IANS, ESA, "
                 "CNN, Fox, People, ESPNcricinfo, formula1.com, "
-                "Investopedia, EC, QNC, MEM, PIB, FT, EIN, Okinawa Direct.")
+                "Investopedia, EC, QNC, MEM, PIB, FT, EIN, Okinawa Direct, "
+                "Kyiv Post, Hindu BusinessLine.")
